@@ -1,0 +1,21 @@
+1. Create a Repo
+2. git remote add origin URL -> Make a Connection between Repo and Local
+3. git clone URL
+4. cd -> change to Directory
+5. vi File Name
+6. git add (File Name)
+7. git commit -m "Commit Msg"
+8. git branch -> To check branch
+9. git branch -M main -> To switch branch
+10. git push -u origin main -> Push to repo
+10. git push origin main
+    => Username:
+    => Password: 
+
+   git remote remove origin
+   git remote add origin URL
+   git remote
+   git push -u origin main
+   git push origin main
+    => Username:
+    => Password: 
