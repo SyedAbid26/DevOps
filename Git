@@ -1,0 +1,171 @@
+Install and configure Git:
+[] sudo su
+[] yum -y install git
+[] git –version
+
+Explanation of each command with Example:
+1. git config
+	-> Configuring username and email in git
+	-> We must configure username and email in git for tracking purpose
+Command: git config
+	[] git config –list
+	[] git config –global user.name “Abid”
+	[] git config –global user.email "abid.devops@gmail.com"
+
+2. git init
+	-> git init command is used to initialize the git repository
+Command: 
+	[] mkdir Abid
+	[] cd Abid
+	[] git init
+	[] ls -la
+
+3. git add
+	-> Create file and add that file to staging area and check the status
+Command: git add
+	[] vi test1
+	[] git status
+	[] git add test1
+	[] git add . -> For all files
+	-> your files are staged now
+
+4. git status
+	-> To view the state of the working directory.
+	-> Git status is to check the status of files (added or committed)
+Command: git status
+
+5. git commit
+	-> Commit the changes to local repo.
+Command: git commit -m “commitmsg”
+
+6. Git log:
+	-> git log will display the commit id and commit msg
+Command: git log
+	[] git log -> view history of commits
+	[] git log --oneline -> view commit logs in oneline
+
+7. git show
+	-> git show will display commitid, commitmsg and data inside the file.
+	-> Observer the difference between modified file and untracked file see commits id
+Command: git show
+
+8. .gitignore
+	-> ignore the files while committing.
+	-> purpose is developers are writing the code and once they build .class files also will be generated. In this case we have to eliminate .class files. By using git ignore we can eliminate .class files.
+Command: .gitignore
+	[] vi .gitignore
+	    > .java*
+	      :wq!
+	[] git add .gitignore
+	[] git commit -m “ignoring .java files”
+	[] touch .java3 .java4
+	[] git status
+	-> here you could not see .java3 and .java4 because it is ignored by .gitignore.
+	-> First time only we have to commit .ignorefile. Later if any .java files are generated no need to commit. This is caused by retrospective effect.
+
+9. Branching
+	-> Developers can work on their own feature branches. 
+Command: git branch
+	[] git branch -> To see list of available branches
+	[] git branch (Branch Name) -> To create a new branch
+	[] git checkout (Branch Name) -> to switch branch
+	[] vi c1
+	[] git add .
+	[] git commit -m "commitmsg"
+	-> You cannot merge branches of diff repos
+	-> To merge from one branch data to another branch and you have to be in destination branch
+	[] git merge (Branch Name) -> Used to merge branch
+	[] git branch -d (Branch Name) -> To delete branch
+	[] git branch -m (New Name) -> To rename current branch
+
+10. Git conflicts:
+	-> When same file is having different contents in different branches, if you du merge then conflicts occurs.
+	-> Conflicts occurs in 2 ways.
+		1. Merging branches
+		2. Pushing to central repo
+
+11. Removing files:
+Command: git rm -f (File Name)
+
+12. Delete all untracked files
+Command:
+	[] git clean -n 
+	[] git clean -f
+
+13. git stash
+	-> Removes file from working directory and puts in stashing store and gives clean working directory.
+	-> Developers can save their changes and come back later.
+	-> Later on, you can bring back that stashed items to working directory and can resume your work on that file.
+	-> Stash literally means save up as for future use.
+Command: git stash
+	-> To stash an item
+	[] vi Abid1
+	[] git add . (Or) git add Abid1
+	[] git stash
+	-> Stash will be working before commit.
+	[] git stash list -> To see the stashed items list
+	-> To apply stashed items.
+	[] git stash apply stash@{number} -> Get back to your previous commit.
+	[] git stash clear -> To delete the stash items
+
+14. git reset
+	-> To undo commit
+	-> It is used to bring back the file to working area.
+Command: git reset
+	[] git reset --soft (head-id) -> will delete the commit & keep the files in staging
+	[] git reset --hard (head-id) -> bit dangerous - will delete the commit & files from workspace
+	[] git reset --mixed (head-id) -> will delete the commit & un-stage the files
+
+15. git revert
+	-> A revert operation will take the specified commit, remove the changes from that commit, and create a new "revert commit".
+Command: git revert
+	[] git revert (Commit I'D)
+
+16. git remote
+	-> This command lets you to create, view and delete connections to other repos
+Command: 
+	[] git remote add origin URL
+	[] git remote -v -> To check the status
+
+17. git clone
+	-> It is used to clone the remote repos
+Command: 
+	[] git clone URL
+
+18. git fetch
+	-> Downloads commits, files, and references from a remote repository into your local repository without merging them into your working files
+Command: 
+	[] git fetch URL
+
+19. git pull
+	-> It is used to download and merge those changes into your local repo.
+	-> Pull = fetch + merge
+Command: 
+	[] git pull origin main
+
+20. git push
+	-> It is used to publish your local changes to your remote repo
+Command: 
+	[] git push origin (Branch Name)
+
+21. Git tag
+	-> A tag is like a branch that doesn't change. Unlike branches, tags, after being created, have no further history of commits.
+Tags are usually used to mark stable releases
+Command: git tag
+	[] git tag
+	[] git tag (Tag Name2.1)
+	[] git push origin (Tag Name2.1)
+
+22. Git cherrypic
+	-> The command git cherry-pick is typically used to introduce particular commits from one branch within a repository onto a different branch.
+	-> Git allows you to integrate selected, individual commits from any branch into your current HEAD branch.
+	-> The HEAD points out the last commit in the current checkout branch. It is like a pointer to any reference. The HEAD can be understood as the "current branch." When you switch branches with 'checkout,' the HEAD is transferred to the new branch.
+Command: 
+	[] git cherry-pick (Commit I'D)
+
+23. Git fork
+
+24. Git rebase
+	-> The primary reason for rebasing is to maintain a linear project history.
+
+25. git amend
